@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+    color: white;
+}
+:root {
+    --backgroundActive: rgb(0, 182, 0);
+    --bacgroundSecondary: rgb(240, 168, 0);
+}
+body {
+    background-image: url("../assets/Fundo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+li {
+    list-style-type: none;
+}
+header {
+    width: 100%;
+}
+
+header nav {
+    padding: 2em;
+}
+header nav ul {
+    display: flex;
+    align-items: center;
+}
+header nav ul li img {
+    height: 45px;
+}
+header nav ul li h2 {
+    font-size: 26px;
+    margin-left: 10px;
+}
+header nav ul li .circle {
+    height: 25px;
+    width: 25px;
+    background-color: var(--backgroundActive);
+    border-radius: 100px;
+    display: flex;
+    border: solid 1px #5f0000;
+    margin-left: 10px;
+}
+
+article {
+    padding: 3em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* BODY */
+article .title {
+    text-align: center;
+    font-size: 18px;
+}
+article .primary {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+article .primary .bar {
+    height: 20px;
+    border-radius: 10px;
+    background-color: white;
+    margin: 4em 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+article .primary .bar img {
+    height: 70px;
+    position: absolute;
+    left: 0;
+}
+article .primary .bar span {
+    height: 100%;
+    background-color: var(--backgroundActive);
+    border-radius: 100px;
+}
+article .primary .buttons {
+    display: flex;
+    justify-content: space-between;
+}
+article .primary .buttons button {
+    padding: 7px 18px;
+    font-size: 16px;
+    border-radius: 100px;
+    font-weight: bold;
+}
+
+article .primary .buttons .btn-success {
+    border: solid 2px var(--backgroundActive);
+    background-color: var(--backgroundActive);
+}
+article .primary .buttons .btn-primary {
+    border: solid 2px var(--bacgroundSecondary);
+    background-color: var(--bacgroundSecondary);
+}
+article .primary .buttons .btn-disabled {
+    border: solid 2px #525252;
+    background-color: #525252;
+}
+
+article .primary .time {
+    height: 120px;
+    width: 100%;
+    border: solid 2px blueviolet;
+    margin-top: 2em;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+article .primary .time h1 {
+    font-size: 55px;
+    line-height: 60px;
+    font-weight: bold;
+}
+article .primary .time h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+article .primary .active_button {
+    width: 100%;
+    border: solid 2px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    border-radius: 10px;
+    position: relative;
+    height: 80px;
+}
+
+article .primary .active_button h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+article .primary .active_button span {
+    height: 100%;
+    background-color: var(--bacgroundSecondary);
+    position: absolute;
+    left: 0;
+    border-radius: 10px;
+}
