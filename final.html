@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>AVIATOR</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <img src="./assets/foto perfil.png" alt="Foto de perfil">
+                </li>
+                <li>
+                    <h2>Gabriel Vidal</h2>
+                </li>
+                <li>
+                    <span class="circle"></span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <article>
+        <p class="title" id="title"></p>
+        <div class="primary">
+            <div class="bar">
+                <span id="aviator_bar"></span>
+                <img id="aviator_image" src="./assets/aviãozin.png" alt="">
+            </div>
+            <div class="buttons">
+                <button id="btn_ia" class="btn-success">ATIVAR I.A</button>
+                <button class="btn-primary"><span id="btn_peoples"></span> ONLINE</button>
+            </div>
+            <div class="time" id="time">
+                <h1 id="time_text"></h1>
+                <h3>Segundos</h3>
+            </div>
+            <div class="active_button" id="active_button">
+                <span id="active_button_bar"></span>
+                <h3>Iniciar contagem</h3>
+            </div>
+        </div>
+    </article>
+</body>
+<script>
+    // ACTIVE IA
+    const title = document.getElementById("title");
+    const time = document.getElementById("time");
+    const active_button = document.getElementById("active_button");
+    const btn_ia = document.getElementById('btn_ia');
+
+    title.innerHTML = "Contabilizando últimas 1000 velas...";
+
+    let time_active = false;
+    let active_porcent = 0;
+    let btn_ia_click = false;
+    let time_selected = 0;
+
+    const velocity = 10;
+
+    time.style.display = "none";
+    active_button.style.display = "none";
+
+    btn_ia.addEventListener("click", () => {
+        if (!btn_ia_click) {
+            btn_ia.innerHTML = `${17} TOKENS`;
+            btn_ia_click = true;
+            btn_ia.classList.remove("btn-success");
+            btn_ia.classList.add("btn-disabled");
+            barLoad();
+        }
+    });
+
+    const barLoad = () => {
+        setTimeout(() => {
+            if (active_porcent <= 100) {
+                active_porcent++;
+                addLoad(active_porcent);
+                barLoad()
+            } else {
+                activeTime();
+            }
+        }, velocity)
+    }
+
+    const addLoad = (porcent) => {
+        document.getElementById("aviator_image").style.left = `${porcent - 15}%`;
+        document.getElementById("aviator_bar").style.width = `${porcent}%`;
+    }
+
+    const getTime = () => {
+        time_selected = getRandomInt(1, 60);
+    }
+
+    const activeTime = () => {
+        getTime();
+        const time_text = document.getElementById("time_text");
+
+        time.style.display = "flex";
+        active_button.style.display = "flex";
+
+        time_text.innerHTML = time_selected;
+
+        title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
+    }
+
+    addLoad(active_porcent);
+
+</script>
+<script>
+    // TIME
+    let btn_ia_click2 = false;
+
+    const resetAll = () => {
+        time_active = false;
+        active_porcent = 0;
+        btn_ia_click = false;
+        time_selected = 0;
+
+        document.getElementById("active_button_bar").style.width = "0";
+        document.getElementById("time_text").innerHTML = 0;
+        document.getElementById("aviator_image").style.left = "-15%";
+        document.getElementById("aviator_bar").style.width = "0%";
+
+        btn_ia.classList.add("btn-success");
+        btn_ia.classList.remove("btn-disabled");
+        time.style.display = "none";
+        active_button.style.display = "none";
+        btn_ia_click2 = false;
+        btn_ia.innerHTML = "ATIVAR I.A";
+
+        title.innerHTML = "Contabilizando últimas 1000 velas...";
+    }
+
+
+    document.getElementById("active_button").addEventListener("click", () => {
+        if (!btn_ia_click2) {
+            btn_ia_click2 = true;
+            const interval = 10;
+            const increment = interval / (time_selected * 1000) * 100;
+            let timeRemaining = time_selected;
+            let width = 0;
+
+            const progressInterval = setInterval(function () {
+                width += increment;
+                timeRemaining -= interval / 1000;
+
+                if (width >= 100) {
+                    width = 100;
+                    timeRemaining = 0;
+                    clearInterval(progressInterval);
+                    resetAll();
+                } else {
+                    addLoadInTime(width, timeRemaining.toFixed(0))
+                }
+            }, interval);
+        }
+    });
+
+    const addLoadInTime = (porcent, count) => {
+        document.getElementById("active_button_bar").style.width = `${porcent}%`;
+        document.getElementById("time_text").innerHTML = count;
+    }
+</script>
+<script>
+    // PEOPLES ONLINE
+    let quant_peoples = getRandomInt(1941, 2140);
+
+    setInterval(() => {
+        loadQuantPeoples(1, 5);
+        addPeoples(quant_peoples)
+    }, 1000 * 10);
+
+    setInterval(() => {
+        loadQuantPeoples(1, 2);
+        addPeoples(quant_peoples)
+    }, 1000 * 5);
+
+    addPeoples(quant_peoples)
+
+    function loadQuantPeoples(min, max) {
+        const numberGenerate = getRandomInt(min, max);
+        const sinal = getRandomInt(0, 1);
+        if (sinal) {
+            quant_peoples += numberGenerate;
+        } else {
+            quant_peoples -= numberGenerate;
+        }
+    }
+
+    function addPeoples(quant) {
+        const btn_peoples = document.getElementById('btn_peoples');
+        btn_peoples.innerHTML = quant;
+    }
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+
+</html>

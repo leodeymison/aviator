@@ -35,7 +35,7 @@
         </nav>
     </header>
     <article>
-        <p class="title">Contabilizando últimas 1000 velas...</p>
+        <p class="title" id="title"></p>
         <div class="primary">
             <div class="bar">
                 <span id="aviator_bar"></span>
@@ -58,16 +58,21 @@
 </body>
 <script>
     // ACTIVE IA
-    const list_progress_times = [3, 5, 8, 10];
+    const title = document.getElementById("title");
+    const list_progress_times = localStorage.getItem("aviator-times") ? localStorage.getItem("aviator-times").split(",").map(item => parseInt(item)) : [];
     let current_time = 0;
     const time = document.getElementById("time");
     const active_button = document.getElementById("active_button");
     const btn_ia = document.getElementById('btn_ia');
 
+    title.innerHTML = "Contabilizando últimas 1000 velas...";
+
     let time_active = false;
     let active_porcent = 0;
     let btn_ia_click = false;
     let time_selected = 0;
+
+    const velocity = 10;
 
     time.style.display = "none";
     active_button.style.display = "none";
@@ -91,7 +96,7 @@
             } else {
                 activeTime();
             }
-        }, 10)
+        }, velocity)
     }
 
     const addLoad = (porcent) => {
@@ -120,6 +125,8 @@
         active_button.style.display = "flex";
 
         time_text.innerHTML = time_selected;
+
+        title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
     }
 
     addLoad(active_porcent);
@@ -135,38 +142,43 @@
         btn_ia_click = false;
         time_selected = 0;
 
+        document.getElementById("active_button_bar").style.width = "0";
+        document.getElementById("time_text").innerHTML = 0;
+        document.getElementById("aviator_image").style.left = "-15%";
+        document.getElementById("aviator_bar").style.width = "0%";
+
         btn_ia.classList.add("btn-success");
         btn_ia.classList.remove("btn-disabled");
-
-        document.getElementById("aviator_image").style.left = `-15%`;
-        document.getElementById("aviator_bar").style.width = `${0}%`;
-
         time.style.display = "none";
         active_button.style.display = "none";
-
         btn_ia_click2 = false;
+        btn_ia.innerHTML = "ATIVAR I.A";
 
-        document.getElementById("active_button_bar").style.width = `${0}%`;
-        document.getElementById("time_text").innerHTML = 0;
-
-        btn_ia.innerHTML = "ATIVAR I.A"
+        title.innerHTML = "Contabilizando últimas 1000 velas...";
     }
 
 
     document.getElementById("active_button").addEventListener("click", () => {
         if (!btn_ia_click2) {
-            let count = 1;
-            const porcent_per_cicle = 100 / time_selected;
+            btn_ia_click2 = true;
+            const interval = 10;
+            const increment = interval / (time_selected * 1000) * 100;
+            let timeRemaining = time_selected;
+            let width = 0;
 
-            const interval = setInterval(() => {
-                addLoadInTime(porcent_per_cicle * count, time_selected - count);
-                count++;
-            }, 1000);
+            const progressInterval = setInterval(function () {
+                width += increment;
+                timeRemaining -= interval / 1000;
 
-            setTimeout(() => {
-                clearInterval(interval);
-                resetAll();
-            }, 1000 * time_selected);
+                if (width >= 100) {
+                    width = 100;
+                    timeRemaining = 0;
+                    clearInterval(progressInterval);
+                    resetAll();
+                } else {
+                    addLoadInTime(width, timeRemaining.toFixed(0))
+                }
+            }, interval);
         }
     });
 
