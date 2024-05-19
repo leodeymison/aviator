@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
     <title>AVIATOR</title>
 
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -23,7 +23,7 @@
         <nav>
             <ul>
                 <li>
-                    <img src="./assets/foto perfil.png" alt="Foto de perfil">
+                    <img src="../assets/foto perfil.png" alt="Foto de perfil">
                 </li>
                 <li>
                     <h2>Gabriel Vidal</h2>
@@ -39,7 +39,7 @@
         <div class="primary">
             <div class="bar">
                 <span id="aviator_bar"></span>
-                <img id="aviator_image" src="./assets/aviãozin.png" alt="">
+                <img id="aviator_image" src="../assets/aviãozin.png" alt="">
             </div>
             <div class="buttons">
                 <button id="btn_ia" class="btn-success">ATIVAR I.A</button>
@@ -55,6 +55,40 @@
             </div>
         </div>
     </article>
+    <div id="navbar">
+        <ul>
+            <li>
+                <a href="./index.html">
+                    <img src="" alt="">
+                    <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="./game.html">
+                    <img src="" alt="">
+                    <p>jogar</p>
+                </a>
+            </li>
+            <li>
+                <a href="./index.html">
+                    <img src="" alt="">
+                    <p></p>
+                </a>
+            </li>
+            <li>
+                <a href="./classes.html">
+                    <img src="" alt="">
+                    <p>Aulas</p>
+                </a>
+            </li>
+            <li>
+                <a href="./telegram.html">
+                    <img src="" alt="">
+                    <p>Telegram</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 <script>
     // ACTIVE IA
@@ -72,7 +106,7 @@
     let btn_ia_click = false;
     let time_selected = 0;
 
-    const velocity = 100;
+    const velocity = 10;
 
     time.style.display = "none";
     active_button.style.display = "none";
