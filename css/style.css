@@ -38,12 +38,13 @@ header nav ul li img {
     height: 35px;
 }
 header nav ul li h2 {
-    font-size: 20px;
+    font-size: 18px;
     margin-left: 10px;
+    font-weight: 500;
 }
 header nav ul li .circle {
-    height: 10px;
-    width: 10px;
+    height: 20px;
+    width: 20px;
     background-color: var(--backgroundActive);
     border-radius: 100px;
     display: flex;
@@ -70,7 +71,7 @@ article .primary {
 
 article .primary .bar {
     height: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: white;
     margin: 4em 0;
     display: flex;
@@ -84,8 +85,8 @@ article .primary .bar img {
 }
 article .primary .bar span {
     height: 100%;
-    background-color: var(--backgroundActive);
-    border-radius: 100px;
+    background-color: #bc144c;
+    border-radius: 5px;
 }
 article .primary .buttons {
     display: flex;
@@ -94,7 +95,7 @@ article .primary .buttons {
 article .primary .buttons button {
     padding: 7px 18px;
     font-size: 16px;
-    border-radius: 100px;
+    border-radius: 12px;
     font-weight: bold;
 }
 

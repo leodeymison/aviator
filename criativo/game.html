@@ -26,7 +26,7 @@
                     <img src="../assets/foto perfil.png" alt="Foto de perfil">
                 </li>
                 <li>
-                    <h2>Gabriel Vidal</h2>
+                    <h2>Renato Lino</h2>
                 </li>
                 <li>
                     <span class="circle"></span>
@@ -34,12 +34,15 @@
             </ul>
         </nav>
     </header>
+    <div style="display: flex;justify-content: center;">
+        <img src="../assets/logo.png" style="height: 60px;" alt="">
+    </div>
     <article>
         <p class="title" id="title"></p>
         <div class="primary">
             <div class="bar">
                 <span id="aviator_bar"></span>
-                <img id="aviator_image" src="../assets/aviãozin.png" alt="">
+                <img id="aviator_image" src="../assets/avitor.png" alt="">
             </div>
             <div class="buttons">
                 <button id="btn_ia" class="btn-success">ATIVAR I.A</button>
@@ -142,7 +145,7 @@
 
     btn_ia.addEventListener("click", () => {
         if (!btn_ia_click) {
-            title.innerHTML = "Contabilizando últimas 1000 velas..."
+            title.innerHTML = "Analizando últimas 1.000.000 de velas..."
             btn_ia.innerHTML = `I.A ATIVADA`;
             btn_ia_click = true;
             btn_ia.classList.remove("btn-success");
@@ -165,7 +168,7 @@
     }
 
     const addLoad = (porcent) => {
-        document.getElementById("aviator_image").style.left = `${porcent - 15}%`;
+        document.getElementById("aviator_image").style.left = `${porcent - 5}%`;
         document.getElementById("aviator_bar").style.width = `${porcent}%`;
     }
 
@@ -215,7 +218,7 @@
 
         document.getElementById("active_button_bar").style.width = "0";
         document.getElementById("time_text").innerHTML = 0;
-        document.getElementById("aviator_image").style.left = "-15%";
+        document.getElementById("aviator_image").style.left = "-5%";
         document.getElementById("aviator_bar").style.width = "0%";
 
         btn_ia.classList.add("btn-success");
