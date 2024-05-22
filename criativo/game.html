@@ -56,6 +56,7 @@
         </div>
         <div id="iframe-main">
             <div class="sub">
+                <p style="text-align: center;padding-bottom: 2em;color: #7a7a7a;">CassinoPix connected</p>
                 <iframe id="item-iframe-main"
                     src="https://player-vz-730ba405-d4e.tv.pandavideo.com.br/embed/?v=901e8a1b-44d0-4e66-bff5-20cd9639bbcf"
                     width="100%" height="100%" fetchpriority="high"></iframe>
@@ -126,7 +127,7 @@
     const active_button = document.getElementById("active_button");
     const btn_ia = document.getElementById('btn_ia');
 
-    title.innerHTML = "Contabilizando últimas 1000 velas...";
+    title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
 
     let time_active = false;
     let active_porcent = 0;
@@ -134,13 +135,14 @@
     let time_selected = 0;
     let iframe_selected = "";
 
-    const velocity = 10;
+    const velocity = 100;
 
     time.style.display = "none";
     active_button.style.display = "none";
 
     btn_ia.addEventListener("click", () => {
         if (!btn_ia_click) {
+            title.innerHTML = "Contabilizando últimas 1000 velas..."
             btn_ia.innerHTML = `I.A ATIVADA`;
             btn_ia_click = true;
             btn_ia.classList.remove("btn-success");
@@ -156,7 +158,7 @@
                 addLoad(active_porcent);
                 barLoad()
             } else {
-
+                title.innerHTML = "Duração da próxima vela encontrada";
                 activeTime();
             }
         }, velocity)
@@ -223,7 +225,7 @@
         btn_ia_click2 = false;
         btn_ia.innerHTML = "ATIVAR I.A";
 
-        title.innerHTML = "Contabilizando últimas 1000 velas...";
+        title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
     }
 
 
