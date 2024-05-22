@@ -10,6 +10,9 @@
     --bacgroundSecondary: rgb(240, 168, 0);
     --navbar-height: 85px;
 }
+.mt-4 {
+    margin-top: 2em;
+}
 body {
     background-image: url("../assets/Fundo.png");
     background-size: 100%;
@@ -166,7 +169,7 @@ article .primary .active_button span {
 }
 #navbar ul {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 5px;
     padding: 0 1em;
     height: 100%;
@@ -183,4 +186,67 @@ article .primary .active_button span {
     justify-content: center;
     align-items: center;
     text-decoration: none;
+}
+
+#navbar ul li a svg {
+    fill: rgb(232, 232, 232);
+    margin: 2px 0;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+#navbar ul li.active a svg {
+    fill: rgb(0, 0, 0);
+    background-color: red;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+#navbar ul li a p {
+    color: rgb(232, 232, 232);
+    font-size: 14px;
+}
+#home {
+    padding: 0 1em;
+}
+#home h1 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 0.5em;
+}
+
+#home .btn-home {
+    width: 100%;
+    padding: 0.5em 0;
+    border: solid 1px white;
+    display: flex;
+    justify-content: center;
+}
+
+#home .btn-home span {
+    margin-right: 5px;
+    color: white;
+    border: none;
+}
+
+
+#iframe-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+    border: none;
+}
+
+#iframe-main .sub {
+    width: 90%;
+    border: none;
+}
+
+#iframe-main .sub iframe {
+    border: none;
+    height: 80vh;
+    width: 100%;
 }
