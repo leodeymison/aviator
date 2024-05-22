@@ -38,7 +38,7 @@ header nav ul li img {
     height: 35px;
 }
 header nav ul li h2 {
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 10px;
     font-weight: 500;
 }
@@ -48,7 +48,6 @@ header nav ul li .circle {
     background-color: var(--backgroundActive);
     border-radius: 100px;
     display: flex;
-    border: solid 1px #5f0000;
     margin-left: 10px;
 }
 
