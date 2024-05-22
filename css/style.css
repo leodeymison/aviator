@@ -13,10 +13,12 @@
 .mt-4 {
     margin-top: 2em;
 }
+
 body {
-    background-image: url("../assets/Fundo.png");
+    /* background-image: url("../assets/back.jpeg");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background-image: linear-gradient(to right, #0b0b0bf5, #151515f5);
 }
 li {
     list-style-type: none;

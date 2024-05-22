@@ -56,8 +56,8 @@
         </div>
         <div id="iframe-main">
             <div class="sub">
-                <iframe
-                    src="https://player-vz-730ba405-d4e.tv.pandavideo.com.br/embed/?v=c71059ef-4e30-4104-9d6b-0622427cbb83&preload=false"
+                <iframe id="item-iframe-main"
+                    src="https://player-vz-730ba405-d4e.tv.pandavideo.com.br/embed/?v=901e8a1b-44d0-4e66-bff5-20cd9639bbcf"
                     width="100%" height="100%" fetchpriority="high"></iframe>
             </div>
         </div>
@@ -120,6 +120,7 @@
     // ACTIVE IA
     const title = document.getElementById("title");
     const list_progress_times = localStorage.getItem("aviator-times") ? localStorage.getItem("aviator-times").split(",").map(item => parseInt(item)) : [];
+    const list_progress_iframes = localStorage.getItem("aviator-iframes") ? localStorage.getItem("aviator-iframes").split(",") : [];
     let current_time = 0;
     const time = document.getElementById("time");
     const active_button = document.getElementById("active_button");
@@ -131,6 +132,7 @@
     let active_porcent = 0;
     let btn_ia_click = false;
     let time_selected = 0;
+    let iframe_selected = "";
 
     const velocity = 10;
 
@@ -154,6 +156,7 @@
                 addLoad(active_porcent);
                 barLoad()
             } else {
+
                 activeTime();
             }
         }, velocity)
@@ -167,6 +170,7 @@
     const getTime = () => {
         if (list_progress_times.length) {
             time_selected = list_progress_times[current_time];
+            iframe_selected = list_progress_iframes[current_time];
             if (list_progress_times[current_time + 1]) {
                 current_time++;
             } else {
@@ -180,11 +184,16 @@
     const activeTime = () => {
         getTime();
         const time_text = document.getElementById("time_text");
+        const item_iframe_main = document.getElementById("item-iframe-main");
 
         time.style.display = "flex";
         active_button.style.display = "flex";
 
         time_text.innerHTML = time_selected;
+        item_iframe_main.src = iframe_selected;
+
+        console.log(item_iframe_main.getElementsByClassName("selector"))
+        item_iframe_main.getElementsByClassName("selector")[0].click();
 
         title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
     }

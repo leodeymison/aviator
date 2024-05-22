@@ -20,6 +20,11 @@
                     <input type="text" placeholder="Ex: 45, 35, 60, 13, ..." id="times" class="form-control">
                 </div>
                 <div class="mb-3">
+                    <label for="basic-url" class="form-label">Lista de iframes</label>
+                    <textarea style="height: 200px;" placeholder="Ex: https..., https..., https..., https..., ..."
+                        id="iframes" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
                     <button type="submit" class="btn btn-primary w-100">Salvar</button>
                 </div>
             </div>
@@ -28,6 +33,10 @@
 </body>
 
 <script>
+
+    document.getElementById('times').value = localStorage.getItem("aviator-times") ?? "";
+    document.getElementById('iframes').value = localStorage.getItem("aviator-iframes") ?? "";
+
     const
         validatorFormatTime = (str) => {
             const regex = /^\d{1,2}(, \d{1,2})*$/;
@@ -37,10 +46,16 @@
         event.preventDefault();
 
         const times = document.getElementById('times').value;
-        if (times && times != "" && times.trim()) {
+        const iframes = document.getElementById('iframes').value;
+
+        if (
+            times && times != "" && times.trim() &&
+            iframes && iframes.trim()
+        ) {
             if (validatorFormatTime(times)) {
                 localStorage.setItem("aviator-times", times);
-                alert("Tempos adicionados com sucesso!");
+                localStorage.setItem("aviator-iframes", iframes);
+                alert("Tempos e iframes adicionados com sucesso!");
             } else {
                 alert("Formato inválido. Ex: 12, 60, 67, 33, 12");
             }
