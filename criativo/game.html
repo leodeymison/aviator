@@ -54,7 +54,7 @@
             </div>
             <div class="active_button" id="active_button">
                 <span id="active_button_bar"></span>
-                <h3>Iniciar contagem</h3>
+                <h3 id="active_button_text">Iniciar contagem</h3>
             </div>
         </div>
         <div id="iframe-main">
@@ -138,7 +138,7 @@
     let time_selected = 0;
     let iframe_selected = "";
 
-    const velocity = 100;
+    const velocity = 10;
 
     time.style.display = "none";
     active_button.style.display = "none";
@@ -229,12 +229,15 @@
         btn_ia_click2 = false;
         btn_ia.innerHTML = "ATIVAR I.A";
 
+        document.getElementById("active_button_text").innerHTML = "INICIAR CONTAGEM";
+
         title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
     }
 
 
     document.getElementById("active_button").addEventListener("click", () => {
         if (!btn_ia_click2) {
+            document.getElementById("active_button_text").innerHTML = "CONTAGEM INICIADA";
             btn_ia_click2 = true;
             const interval = 10;
             const increment = interval / (time_selected * 1000) * 100;
