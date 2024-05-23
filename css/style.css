@@ -252,3 +252,8 @@ article .primary .active_button span {
     height: 76vh;
     width: 100%;
 }
+
+
+body:-webkit-full-page-media {
+    background-color: red;
+}
