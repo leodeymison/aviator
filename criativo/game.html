@@ -132,6 +132,8 @@
 
     title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
 
+    document.getElementById("item-iframe-main") = list_progress_iframes[current_time];
+
     let time_active = false;
     let active_porcent = 0;
     let btn_ia_click = false;
@@ -175,7 +177,7 @@
     const getTime = () => {
         if (list_progress_times.length) {
             time_selected = list_progress_times[current_time];
-            iframe_selected = list_progress_iframes[current_time];
+            // iframe_selected = list_progress_iframes[current_time];
             if (list_progress_times[current_time + 1]) {
                 current_time++;
             } else {
@@ -183,23 +185,17 @@
             }
         } else {
             time_selected = getRandomInt(1, 60);
-            iframe_selected = "https://player-vz-730ba405-d4e.tv.pandavideo.com.br/embed/?v=901e8a1b-44d0-4e66-bff5-20cd9639bbcf"
         }
     }
 
     const activeTime = () => {
         getTime();
         const time_text = document.getElementById("time_text");
-        const item_iframe_main = document.getElementById("item-iframe-main");
 
         time.style.display = "flex";
         active_button.style.display = "flex";
 
         time_text.innerHTML = time_selected;
-        item_iframe_main.src = iframe_selected;
-
-        console.log(item_iframe_main.getElementsByClassName("selector"))
-        item_iframe_main.getElementsByClassName("selector")[0].click();
 
         title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
     }
