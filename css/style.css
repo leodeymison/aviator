@@ -9,11 +9,21 @@
     --backgroundActive: rgb(0, 182, 0);
     --bacgroundSecondary: rgb(240, 168, 0);
     --navbar-height: 85px;
+    --backgroundPrimary: #bc144c
+}
+.mt-1 {
+    margin-top: 0.5em;
+}
+.mt-2 {
+    margin-top: 1em;
 }
 .mt-4 {
     margin-top: 2em;
 }
-
+.btn-primary {
+    background-color: var(--backgroundPrimary) !important;
+    border: solid 2px var(--backgroundPrimary) !important;
+}
 body {
     background-image: url("../assets/back2.jpeg");
     background-size: 100%;
@@ -138,34 +148,36 @@ article .primary .time h3 {
 
 article .primary .active_button {
     width: 100%;
-    border: solid 2px white;
+    border: solid 2px var(--backgroundPrimary);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 2em;
-    border-radius: 10px;
+    border-radius: 1000px;
     position: relative;
-    height: 80px;
+    height: 60px;
+    z-index: 1;
+    overflow: hidden;
 }
 
 article .primary .active_button h3 {
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
-    z-index: 1;
+    z-index: 2;
 }
 
 article .primary .active_button span {
     height: 100%;
-    background-color: var(--bacgroundSecondary);
+    background-color: var(--backgroundPrimary);
     position: absolute;
     left: 0;
-    border-radius: 10px;
+    border-radius: 1000px;
 }
 
 #navbar {
     position: fixed;
     height: var(--navbar-height);
-    background-color: rgba(20, 20, 20, 0.615);
+    background-color: rgba(20, 20, 20, 0.902);
     backdrop-filter: blur(5px);
     width: 100%;
     left: 0;
@@ -222,18 +234,36 @@ article .primary .active_button span {
     margin-top: 0.5em;
 }
 
-#home .btn-home {
+.btn-home {
     width: 100%;
-    padding: 0.5em 0;
-    border: solid 1px white;
+    padding: 0.8em 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-decoration: none !important;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 20px;
 }
 
-#home .btn-home span {
+.btn-home.color1 {
+    background-image: linear-gradient(to right, #64fbf1, #00ffee);
+}
+.btn-home.color2 {
+    background-image: linear-gradient(to right, #ffae00, #ff00b7);
+}
+.btn-home.color1 p {
+    color: #000;
+}
+.btn-home.color2 p {
+    color: #000;
+}
+.btn-home span, #home .btn-home svg {
     margin-right: 5px;
-    color: white;
-    border: none;
+    color: rgb(0, 0, 0);
+    border: none !important;
+    text-decoration: none !important;
+    font-size: 26px;
 }
 
 
@@ -260,4 +290,50 @@ article .primary .active_button span {
 
 body:-webkit-full-page-media {
     background-color: red;
+}
+
+
+#academy, #classe {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#box_videos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#box_videos li {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2em ;
+    position: relative;
+    height: 180px;
+}
+#box_videos li .iframe-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('preview-image.jpg') no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 10px; 
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#box_videos li .iframe-cover span {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    font-size: 40px;
+}
+#box_videos li iframe {
+    border: solid 2px red;
+    border-radius: 10px; 
+    width: 100%;
+    height: 100%;
 }
