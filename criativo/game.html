@@ -50,7 +50,7 @@
             </div>
             <div class="time" id="time">
                 <h1 id="time_text"></h1>
-                <h3>Segundos</h3>
+                <h3 id="time_title">Segundos</h3>
             </div>
             <div class="active_button" id="active_button">
                 <span id="active_button_bar"></span>
@@ -208,26 +208,33 @@
     let btn_ia_click2 = false;
 
     const resetAll = () => {
-        time_active = false;
-        active_porcent = 0;
-        btn_ia_click = false;
-        time_selected = 0;
+        const secunds_restar = 10;
+        document.getElementById("time_text").style.color = "red";
+        document.getElementById("time_title").style.color = "red";
+        setInterval(() => {
+            document.getElementById("time_text").style.color = "white";
+            document.getElementById("time_title").style.color = "white";
+            time_active = false;
+            active_porcent = 0;
+            btn_ia_click = false;
+            time_selected = 0;
 
-        document.getElementById("active_button_bar").style.width = "0";
-        document.getElementById("time_text").innerHTML = 0;
-        document.getElementById("aviator_image").style.left = "-5%";
-        document.getElementById("aviator_bar").style.width = "0%";
+            document.getElementById("active_button_bar").style.width = "0";
+            document.getElementById("time_text").innerHTML = 0;
+            document.getElementById("aviator_image").style.left = "-5%";
+            document.getElementById("aviator_bar").style.width = "0%";
 
-        btn_ia.classList.add("btn-success");
-        btn_ia.classList.remove("btn-disabled");
-        time.style.display = "none";
-        active_button.style.display = "none";
-        btn_ia_click2 = false;
-        btn_ia.innerHTML = "ATIVAR I.A";
+            btn_ia.classList.add("btn-success");
+            btn_ia.classList.remove("btn-disabled");
+            time.style.display = "none";
+            active_button.style.display = "none";
+            btn_ia_click2 = false;
+            btn_ia.innerHTML = "ATIVAR I.A";
 
-        document.getElementById("active_button_text").innerHTML = "INICIAR CONTAGEM";
+            document.getElementById("active_button_text").innerHTML = "INICIAR CONTAGEM";
 
-        title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
+            title.innerHTML = "Ative a ferramenta para descobrir os segundos da próxima vela";
+        }, 1000 * secunds_restar);
     }
 
 
