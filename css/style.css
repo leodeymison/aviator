@@ -337,3 +337,31 @@ body:-webkit-full-page-media {
     width: 100%;
     height: 100%;
 }
+
+
+#select_page {
+
+}
+#select_page h1 {
+    text-align: center;
+    padding: 2em 0.5em;
+    font-size: 20px;
+}
+#select_page h1 .color {
+    color: var(--backgroundPrimary);
+}
+
+#select_page ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px; 
+    padding: 10px 20px;
+}
+#select_page ul li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#select_page ul li a img {
+    width: 100%;
+}
