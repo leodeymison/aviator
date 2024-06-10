@@ -340,11 +340,11 @@ body:-webkit-full-page-media {
 
 
 #select_page {
-
+    padding-bottom: 100em;
 }
 #select_page h1 {
     text-align: center;
-    padding: 2em 0.5em;
+    padding: 2em 0.5em 2em 0.5em;
     font-size: 20px;
 }
 #select_page h1 .color {
@@ -363,5 +363,5 @@ body:-webkit-full-page-media {
     align-items: center;
 }
 #select_page ul li a img {
-    width: 100%;
+    width: 60%;
 }
