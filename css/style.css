@@ -354,13 +354,22 @@ body:-webkit-full-page-media {
 #select_page ul {
     display: grid;
     grid-template-columns: 1fr 1fr; 
-    gap: 30px; 
+    gap: 20px 0px; 
     padding: 10px 20px;
 }
 #select_page ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#select_page ul li a.left{
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+#select_page ul li a.right{
+    justify-content: flex-end;
+    margin-right: 10px;
 }
 #select_page ul li a img {
     width: 60%;
